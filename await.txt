@@ -1,0 +1,15 @@
+
+Usamos uma função async para onde passamos o fetch para ela
+e usamos o await como a espera de uma resposta
+
+async function buscaEndereco(){
+    const meuCep = 88390000;
+    var consultaCep = await fetch(`https://viacep.com.br/ws/${meuCep}/json/`)
+    var consultaCEPConvertida = await consultaCep.json();
+    
+    console.log(consultaCEPConvertida)
+}
+
+buscaEndereco();
+
+Podemos usar o try e catch para trcar

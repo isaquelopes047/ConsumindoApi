@@ -1,0 +1,58 @@
+
+~ callback são funçoes que são enviadas como
+parametro para outras funçoes 
+
+~ Uma função callback é uma função passada
+a outra função como argumento, que
+é então invocado dentro da função
+externa para completar algum tipo
+de rotina ou ação.
+
+------------------------------------------------------------
+THEN (Então) basicamente com aquela resposta do fetch
+faça algo com a resposta
+
+/* EXEMPLO DE OBJETO JSON RETORNADO COM .THEN */
+{
+    "cep": "88390-000",
+    "logradouro": "",
+    "complemento": "",
+    "bairro": "",
+    "localidade": "Barra Velha",
+    "uf": "SC",
+    "ibge": "4202107",
+    "gia": "",
+    "ddd": "47",
+    "siafi": "8041"
+}
+
+var consultaCep = fetch(`url da API`)
+    .then(resposta => resposta.json())
+-----------------------------------------------------------
+
+-----------------------------------------------------------
+/* CAPTAR ERROS .CATCH */
+
+Final do .then conseguimos captar se houve algum ERRO 
+com nossa requisição, usando o .catch
+
+    .catch(erro => console.log(erro))
+
+Podemos captar os errado diretamente no .then usando o throw
+e if else para dar uma condicional
+
+.then(r => {
+    if(r.erro) {
+        throw Error('Erro de Cep')
+    } else {
+        console.log(r) //Acessamos as propriedades do Objeto com ., ou seja resposta.cep    
+    }})
+.catch(erro => console.log(erro))
+
+-----------------------------------------------------------
+/* FINALIZANDO PROCESSO COM .finally */
+
+Ao final da promisse depois de .catch usamos o .finally
+para indicar o final do processo
+INDEPENDENTE DA RESPOSA DA PROCESSA, SENDO COMCLUIDA OU DANDO
+ERRO ELE VAI APARECER
